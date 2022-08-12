@@ -6,6 +6,7 @@ import axios from "axios";
 import ListPage from "./pages/ListPage";
 import LoginPage from "./pages/LoginPage";
 import userService from "./utils/userService";
+import SignupPage from "./pages/SignupPage";
 
 function App() {
   const [user, setUser] = useState({});
@@ -41,7 +42,14 @@ function App() {
     <div className="App">
       Hello Verld
       <Routes>
-        <Route path="/login" element={<LoginPage setUser={setUser} />} />
+        <Route
+          path="/login"
+          element={<LoginPage handleSignupOrLogin={handleSignupOrLogin} />}
+        />
+        <Route
+          path="/signup"
+          element={<SignupPage handleSignupOrLogin={handleSignupOrLogin} />}
+        />
         <Route
           path="/my-list"
           element={
