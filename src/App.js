@@ -34,9 +34,9 @@ function App() {
     setUser(userService.getUser());
   };
 
-  useEffect(() => {
-    axios.get(`${process.env.REACT_APP_DB}/my-list`);
-  });
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8000/my-list`);
+  // });
 
   return (
     <div className="App">

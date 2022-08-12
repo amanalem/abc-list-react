@@ -13,12 +13,11 @@ const SignupPage = ({ handleSignupOrLogin }) => {
 
   return (
     <div>
-      SignupPage
       <SignupForm
         updateMessage={updateMessage}
         handleSignupOrLogin={handleSignupOrLogin}
       />
-      <p>{message}</p>
+      <p>{message.message}</p>
     </div>
   );
 };

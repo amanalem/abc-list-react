@@ -1,7 +1,7 @@
 import tokenService from "./tokenService";
 
 const login = (creds) => {
-  return fetch(`${process.env.REACT_APP_DB}/login`, {
+  return fetch(`http://localhost:8000/login`, {
     method: "POST",
     headers: new Headers({ "Content-Type": "application/json" }),
     body: JSON.stringify(creds),
@@ -14,7 +14,7 @@ const login = (creds) => {
 };
 
 function signup(user) {
-  return fetch(`${process.env.REACT_APP_DB}/signup`, {
+  return fetch(`http://localhost:8000/signup`, {
     method: "POST",
     headers: new Headers({ "Content-Type": "application/json" }),
     body: JSON.stringify(user),
