@@ -1,7 +1,23 @@
 import React from "react";
+import { useState } from "react";
+import SignupForm from "../components/SignupForm";
 
 const SignupPage = () => {
-  return <div>SignupPage</div>;
+  const [message, setMessage] = useState({
+    message: "",
+  });
+
+  const updateMessage = (msg) => {
+    setMessage({ message: msg });
+  };
+
+  return (
+    <div>
+      SignupPage
+      <SignupForm updateMessage={updateMessage} />
+      <p>{message}</p>
+    </div>
+  );
 };
 
 export default SignupPage;

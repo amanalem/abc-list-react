@@ -5,6 +5,7 @@ import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ListPage from "./pages/ListPage";
 import LoginPage from "./pages/LoginPage";
+import userService from "./utils/userService";
 
 function App() {
   const [user, setUser] = useState({});
@@ -19,6 +20,17 @@ function App() {
     setListA(a);
     setListB(b);
     setListC(c);
+  };
+
+  /*--- LifeCycle Methods ---*/
+
+  const handleLogout = () => {
+    userService.logout();
+    setUser(null);
+  };
+
+  const handleSignupOrLogin = () => {
+    setUser(userService.getUser());
   };
 
   useEffect(() => {

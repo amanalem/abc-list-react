@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import userService from "../utils/userService";
 
 const LoginPage = ({ setUser }) => {
   const navigate = useNavigate();
