@@ -9,19 +9,9 @@ import userService from "./utils/userService";
 import SignupPage from "./pages/SignupPage";
 
 function App() {
-  const [user, setUser] = useState({});
-
-  const [listA, setListA] = useState([]);
-
-  const [listB, setListB] = useState([]);
-
-  const [listC, setListC] = useState([]);
-
-  const setLists = (a, b, c) => {
-    setListA(a);
-    setListB(b);
-    setListC(c);
-  };
+  const [user, setUser] = useState({
+    _id: "aman",
+  });
 
   /*--- LifeCycle Methods ---*/
 
@@ -38,6 +28,8 @@ function App() {
   //   axios.get(`http://localhost:8000/my-list`);
   // });
 
+  useEffect(() => {});
+
   return (
     <div className="App">
       Hello Verld
@@ -50,18 +42,7 @@ function App() {
           path="/signup"
           element={<SignupPage handleSignupOrLogin={handleSignupOrLogin} />}
         />
-        <Route
-          path="/my-list"
-          element={
-            <ListPage
-              setLists={setLists}
-              listA={listA}
-              listB={listB}
-              listC={listC}
-              user={user}
-            />
-          }
-        />
+        <Route path="/my-list" element={<ListPage user={user} />} />
       </Routes>
     </div>
   );
