@@ -3,21 +3,26 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const NavStyle = styled.div`
-  Link {
+  a {
     margin: 0, 100px, 0 10px;
   }
 `;
 
 const Nav = ({ handleLogout, user }) => {
+  const ifUser = user;
+  console.log(user);
   return (
     <div>
       <NavStyle>
-        <Link to="/login" onClick={handleLogout}>
-          Log Out
-        </Link>
-        <Link to="/login">Log In</Link>
+        {ifUser && (
+          <Link to="/login" onClick={handleLogout}>
+            Log Out
+          </Link>
+        )}
 
-        <Link to="/signup">Sign Up</Link>
+        {!ifUser && <Link to="/login">Log In</Link>}
+
+        {!ifUser && <Link to="/signup">Sign Up</Link>}
       </NavStyle>
     </div>
   );
