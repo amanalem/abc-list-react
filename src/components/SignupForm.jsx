@@ -14,9 +14,7 @@ const SignupForm = ({ updateMessage, handleSignupOrLogin }) => {
 
   const handleChange = (e) => {
     updateMessage("");
-    setFormData({
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
