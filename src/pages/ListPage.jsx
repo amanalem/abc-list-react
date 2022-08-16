@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import userService from "../utils/userService";
 
-const ListPage = ({ user,setLists }) => {
+const ListPage = ({ user, setLists }) => {
   const [message, setMessage] = useState({
     message: "",
   });
@@ -12,8 +12,6 @@ const ListPage = ({ user,setLists }) => {
   const updateMessage = (msg) => {
     setMessage({ message: msg });
   };
-
-  
 
   useEffect(() => {
     try {
@@ -27,7 +25,14 @@ const ListPage = ({ user,setLists }) => {
     }
   }, []);
 
-  return <div>ListPage</div>;
+  return (
+    <div>
+      <h2>ListPage</h2>
+      <Link to="/new">
+        <button>New Item</button>
+      </Link>
+    </div>
+  );
 };
 
 export default ListPage;

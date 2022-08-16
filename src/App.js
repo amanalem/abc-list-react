@@ -39,7 +39,7 @@ function App() {
   // });
 
   useEffect(() => {
-    userService.getUser();
+    setUser(userService.getUser());
   }, []);
 
   return (
@@ -69,6 +69,10 @@ function App() {
               setCList={setCList}
             />
           }
+        />
+        <Route
+          path="/*"
+          element={user ? <Navigate to="/my-list" /> : <Navigate to="/login" />}
         />
       </Routes>
     </div>
