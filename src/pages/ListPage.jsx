@@ -3,8 +3,9 @@ import styled from "styled-components";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import userService from "../utils/userService";
+import listService from "../utils/listService";
 
-const ListPage = ({ user, setLists }) => {
+const ListPage = ({ user, setList, list }) => {
   const [message, setMessage] = useState({
     message: "",
   });
@@ -15,11 +16,9 @@ const ListPage = ({ user, setLists }) => {
 
   useEffect(() => {
     try {
-      axios
-        .get(`http://localhost:8000` + `/my-list?owner=${user._id}`)
-        .then(({ data: list }) => {
-          setLists(list.aList, list.bList, list.cList);
-        });
+      listService.index(user._id).then((list) => {
+        setList(list);
+      });
     } catch (err) {
       updateMessage(err.message);
     }

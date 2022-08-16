@@ -6,22 +6,16 @@ import axios from "axios";
 import ListPage from "./pages/ListPage";
 import LoginPage from "./pages/LoginPage";
 import userService from "./utils/userService";
+
 import SignupPage from "./pages/SignupPage";
 import NewItemPage from "./pages/NewItemPage";
 import Nav from "./components/Nav";
+import listService from "./utils/listService";
 
 function App() {
   const [user, setUser] = useState(null);
 
-  const [aList, setAList] = useState([]);
-  const [bList, setBList] = useState([]);
-  const [cList, setCList] = useState([]);
-
-  const setLists = (a, b, c) => {
-    setAList(a);
-    setBList(b);
-    setCList(c);
-  };
+  const [list, setList] = useState({});
 
   /*--- LifeCycle Methods ---*/
 
@@ -57,18 +51,11 @@ function App() {
         />
         <Route
           path="/my-list"
-          element={<ListPage user={user} setLists={setLists} />}
+          element={<ListPage user={user} setList={setList} list={list} />}
         />
         <Route
           path="/new"
-          element={
-            <NewItemPage
-              user={user}
-              setAList={setAList}
-              setBList={setBList}
-              setCList={setCList}
-            />
-          }
+          element={<NewItemPage user={user} setList={setList} />}
         />
         <Route
           path="/*"

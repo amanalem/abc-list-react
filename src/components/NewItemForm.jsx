@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const NewItemForm = ({ user, setAList, setBList, setCList }) => {
+const NewItemForm = ({ user, setList }) => {
   const [formData, setFormData] = useState({
     entry: "",
     letter: "",
     owner: user._id,
   });
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div>
@@ -28,6 +32,7 @@ const NewItemForm = ({ user, setAList, setBList, setCList }) => {
             />
           </div>
         </div>
+        &nbsp;
         <div className="form-group">
           <div className="col-sm-12">
             <label>
@@ -36,13 +41,36 @@ const NewItemForm = ({ user, setAList, setBList, setCList }) => {
                 className="form-control"
                 name="letter"
                 value="a"
-                checked={formData.letter === "a"}
+                onChange={handleChange}
               />
               A
             </label>
+            <label>
+              <input
+                type="radio"
+                className="form-control"
+                name="letter"
+                value="b"
+                onChange={handleChange}
+              />
+              B
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                className="form-control"
+                name="letter"
+                value="c"
+                onChange={handleChange}
+              />
+              C
+            </label>
           </div>
+          &nbsp;&nbsp;
         </div>
       </form>
+
       <Link to="/my-list">
         <button>back to my list</button>
       </Link>

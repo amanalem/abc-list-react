@@ -10,7 +10,6 @@ const NavStyle = styled.div`
 
 const Nav = ({ handleLogout, user }) => {
   const ifUser = user;
-  console.log(user);
   return (
     <div>
       <NavStyle>
