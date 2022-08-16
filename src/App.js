@@ -15,7 +15,9 @@ import listService from "./utils/listService";
 function App() {
   const [user, setUser] = useState(null);
 
-  const [list, setList] = useState({});
+  const [aList, setAList] = useState(null);
+  const [bList, setBList] = useState(null);
+  const [cList, setCList] = useState(null);
 
   /*--- LifeCycle Methods ---*/
 
@@ -51,12 +53,19 @@ function App() {
         />
         <Route
           path="/my-list"
-          element={<ListPage user={user} setList={setList} list={list} />}
+          element={
+            <ListPage
+              user={user}
+              setAList={setAList}
+              aList={aList}
+              setBList={setBList}
+              bList={bList}
+              setCList={setCList}
+              cList={cList}
+            />
+          }
         />
-        <Route
-          path="/new"
-          element={<NewItemPage user={user} setList={setList} />}
-        />
+        <Route path="/new" element={<NewItemPage user={user} />} />
         <Route
           path="/*"
           element={user ? <Navigate to="/my-list" /> : <Navigate to="/login" />}
