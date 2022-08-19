@@ -6,15 +6,7 @@ import userService from "../utils/userService";
 import listService from "../utils/listService";
 import ListItem from "../components/ListItem";
 
-const ListPage = ({
-  user,
-  setAList,
-  setBList,
-  setCList,
-  aList,
-  bList,
-  cList,
-}) => {
+const ListPage = ({ user, setItems, items }) => {
   const [message, setMessage] = useState({
     message: "",
   });
@@ -25,20 +17,15 @@ const ListPage = ({
 
   useEffect(() => {
     try {
-      listService.index(user._id).then((list) => {
-        setAList([list.aList]);
-      });
-      listService.index(user._id).then((list) => {
-        setBList([list.bList]);
-      });
-      listService.index(user._id).then((list) => {
-        setCList([list.cList]);
+      listService.index(user._id).then((items) => {
+        setItems(items);
       });
     } catch (err) {
       updateMessage(err.message);
     }
   }, [user]);
 
+  console.log(items);
   return (
     <div>
       <h1>My List</h1>
@@ -47,15 +34,51 @@ const ListPage = ({
       </Link>
       <h2>A</h2>
 
-      {aList &&
-        aList.map((item) => {
-          return (
-            <ListItem key={item._id} entry={item.entry} isDone={item.isDone} />
-          );
+      {items &&
+        items.map((a) => {
+          if (a.letter === "a") {
+            return (
+              <ListItem
+                key={a._id}
+                entry={a.entry}
+                isDone={a.isDone}
+                isOverdue={a.isOverdue}
+              />
+            );
+          }
         })}
 
       <h2>B</h2>
+
+      {items &&
+        items.map((b) => {
+          if (b.letter === "b") {
+            return (
+              <ListItem
+                key={b._id}
+                entry={b.entry}
+                isDone={b.isDone}
+                isOverdue={b.isOverdue}
+              />
+            );
+          }
+        })}
+
       <h2>C</h2>
+
+      {items &&
+        items.map((c) => {
+          if (c.letter === "c") {
+            return (
+              <ListItem
+                key={c._id}
+                entry={c.entry}
+                isDone={c.isDone}
+                isOverdue={c.isOverdue}
+              />
+            );
+          }
+        })}
     </div>
   );
 };
