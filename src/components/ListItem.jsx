@@ -21,13 +21,20 @@ const ListItem = ({
     updatedAt: updatedAt,
   });
 
+  const handleChange = (e) => {
+    setEditForm({ ...editForm, [e.target.name]: e.target.value });
+  };
+
   const handleEdit = (e) => {
     e.preventDefault();
-    setEditState({ edit: !editState.edit });
+    if (!editState.edit) {
+      setEditState({ edit: true });
+    } else {
+      handleUpdate();
+    }
   };
 
   const handleUpdate = (e) => {
-    e.preventDefault();
     try {
       listService.update(editForm).then(() => {
         listService.index(user._id).then((items) => {
@@ -62,7 +69,24 @@ const ListItem = ({
         </h3>
       ) : (
         <h3>
-          <input type="text" value={editForm.entry} id="entry" />
+          <input
+            type="text"
+            value={editForm.entry}
+            name="entry"
+            onChange={handleChange}
+          />
+          &nbsp;&nbsp;
+          <select
+            name="letter"
+            placeholder={editForm.letter.toUpperCase()}
+            onChange={handleChange}
+          >
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+          </select>
+          &nbsp;&nbsp;
+          <button onClick={handleEdit}>done</button>
         </h3>
       )}
     </div>

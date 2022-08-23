@@ -61,10 +61,14 @@ const create = (req, res) => {
 
 const update = async (req, res) => {
   console.log(req.body);
-  let item = await Item.findByIdAndUpdate(req.body.id, {
-    entry: req.body.entry,
-    letter: req.body.letter,
-  });
+  let item = await Item.findByIdAndUpdate(
+    req.body.id,
+    {
+      entry: req.body.entry,
+      letter: req.body.letter,
+    },
+    { new: true, upsert: true, timestamps: false }
+  );
   res.json(item);
 };
 
