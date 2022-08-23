@@ -21,6 +21,24 @@ const ListItem = ({
     updatedAt: updatedAt,
   });
 
+  const handleEdit = (e) => {
+    e.preventDefault();
+    setEditState({ edit: !editState.edit });
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    try {
+      listService.update(editForm).then(() => {
+        listService.index(user._id).then((items) => {
+          setItems(items);
+        });
+      });
+    } catch (err) {
+      updateMessage(err.message);
+    }
+  };
+
   const handleDelete = (e) => {
     e.preventDefault();
     try {
@@ -36,10 +54,17 @@ const ListItem = ({
 
   return (
     <div>
-      <h3>
-        {entry}&nbsp;&nbsp;
-        <button onClick={handleDelete}>x</button>
-      </h3>
+      {!editState.edit ? (
+        <h3>
+          {entry}&nbsp;&nbsp;
+          <button onClick={handleDelete}>x</button>&nbsp;&nbsp;
+          <button onClick={handleEdit}>edit</button>
+        </h3>
+      ) : (
+        <h3>
+          <input type="text" value={editForm.entry} id="entry" />
+        </h3>
+      )}
     </div>
   );
 };

@@ -20,6 +20,7 @@ const update = (data) => {
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(data),
   };
+  return fetch(`${BASE_URL}/${data.id}`, options).then((res) => res.json());
 };
 
 const deleteItem = (id) => {
@@ -41,4 +42,5 @@ export default {
   create,
   index,
   delete: deleteItem,
+  update,
 };
