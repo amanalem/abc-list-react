@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000/my-list";
+const BASE_URL = "http://localhost:3001/my-list";
 const axios = require("axios");
 
 const create = (item) => {
@@ -14,9 +14,26 @@ const index = (creds) => {
   return fetch(`${BASE_URL}?owner=${creds}`).then((res) => res.json());
 };
 
+const update = (data) => {
+  const options = {
+    method: "PUT",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(data),
+  };
+};
+
 const deleteItem = (id) => {
-  axios.delete(`${BASE_URL}?_id=${id}`).then((res) => {
-    res.json("item deleted");
+  // axios.delete(`${BASE_URL}?_id=${id}`).then((res) => {
+  //   res.json("item deleted");
+  // });
+  console.log(id);
+
+  const options = {
+    method: "DELETE",
+    headers: { "Content-type": "application/json" },
+  };
+  return fetch(`${BASE_URL}/${id}`, options).then(() => {
+    console.log("Item deleted");
   });
 };
 

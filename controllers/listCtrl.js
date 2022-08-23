@@ -61,7 +61,7 @@ const create = (req, res) => {
 
 const update = async (req, res) => {
   console.log(req.body);
-  let item = await Item.findByIdAndUpdate(req.body._id, {
+  let item = await Item.findByIdAndUpdate(req.body.id, {
     entry: req.body.entry,
     letter: req.body.letter,
   });
@@ -69,7 +69,7 @@ const update = async (req, res) => {
 };
 
 const deleteItem = async (req, res) => {
-  await Item.findByIdAndDelete(req.query._id);
+  await Item.findByIdAndDelete(req.params.id);
   res.json("Item deleted");
 };
 

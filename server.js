@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use("/", userRoutes);
 app.use("/my-list", listRoutes);
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`);

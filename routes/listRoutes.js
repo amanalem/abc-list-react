@@ -8,9 +8,9 @@ router.get("/", listCtrl.index);
 router.post("/", listCtrl.create);
 
 // update
-router.put("/:id/:letter", listCtrl.update);
+router.put("/:id/", listCtrl.update);
 
 // delete
-router.delete("/:id/:letter", listCtrl.delete);
+router.delete("/:id/", listCtrl.delete);
 
 module.exports = router;

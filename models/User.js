@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 require("dotenv").config();
 
-const SALT_ROUNDS = 6;
+const SALT_ROUNDS = process.env.REACT_APP_SALT_ROUNDS;
 
 const opts = {
   timestamps: { currentTime: () => Math.floor(Date.now() / 1000) },

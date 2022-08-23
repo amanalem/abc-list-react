@@ -2,7 +2,7 @@ import tokenService from "./tokenService";
 import axios from "axios";
 
 const login = (creds) => {
-  return fetch(`http://localhost:8000/login`, {
+  return fetch(`http://localhost:3001/login`, {
     method: "POST",
     headers: new Headers({ "Content-Type": "application/json" }),
     body: JSON.stringify(creds),
@@ -15,7 +15,7 @@ const login = (creds) => {
 };
 
 function signup(user) {
-  return fetch(`http://localhost:8000/signup`, {
+  return fetch(`http://localhost:3001/signup`, {
     method: "POST",
     headers: new Headers({ "Content-Type": "application/json" }),
     body: JSON.stringify(user),

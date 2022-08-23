@@ -40,9 +40,15 @@ const ListPage = ({ user, setItems, items }) => {
             return (
               <ListItem
                 key={a._id}
+                id={a._id}
                 entry={a.entry}
                 isDone={a.isDone}
                 isOverdue={a.isOverdue}
+                updateMessage={updateMessage}
+                user={user}
+                setItems={setItems}
+                letter={a.letter}
+                updatedAt={a.updatedAt}
               />
             );
           }
@@ -56,9 +62,15 @@ const ListPage = ({ user, setItems, items }) => {
             return (
               <ListItem
                 key={b._id}
+                id={b._id}
                 entry={b.entry}
                 isDone={b.isDone}
                 isOverdue={b.isOverdue}
+                updateMessage={updateMessage}
+                user={user}
+                setItems={setItems}
+                letter={b.letter}
+                updatedAt={b.updatedAt}
               />
             );
           }
@@ -72,9 +84,15 @@ const ListPage = ({ user, setItems, items }) => {
             return (
               <ListItem
                 key={c._id}
+                id={c._id}
                 entry={c.entry}
                 isDone={c.isDone}
                 isOverdue={c.isOverdue}
+                updateMessage={updateMessage}
+                user={user}
+                setItems={setItems}
+                letter={c.letter}
+                updatedAt={c.updatedAt}
               />
             );
           }
